@@ -75,5 +75,5 @@ Additional logs on reward and loss are stored in the tensorboard_logs folder.
 
 ## Contributions
 
-Nina Mwangi (Play script and Training, Documentation)
-Purity Kihiu (Train Script, Training, Video)
+- Nina Mwangi (Play script and Training, Documentation)
+- Purity Kihiu (Train Script, Training, Video)
