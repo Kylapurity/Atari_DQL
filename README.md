@@ -12,21 +12,24 @@ This project implements a Deep Q-Network (DQN) agent to play the Atari Assault g
 
 We selected CnnPolicy over MlpPolicy because:
 
-- The agent receives pixel-based image input, just like a human player, making CNNs more suitable than fully connected MLPs.
+- The agent receives pixel-based image input, just like a human player, making CNNs more suitable than fully connected MLPs
 - CNNs extract relevant spatial features, improving the agent’s situational awareness and performance.
+- The CNN policy can learn robust features directly from the pixel data, leading to better generalisation and performance in visually complex environments.
 - According to the original DeepMind DQN paper, CNNs outperform MLPs in Atari environments.
 
 ##  Hyperparameter Exploration
 
 Below is a summary of experimental configurations and their performance:
+## Experiment Results
+| Experiment            | γ (Gamma) | Learning Rate | Epsilon (Start → End) | Notable Observations                                                          | Contributors |
+| --------------------- | --------- | ------------- | --------------------- | ----------------------------------------------------------------------------- | ------------ |
+| Experiment\_1         | 0.99      | 5e-4          | 0.01 → 0.01           | High gamma with low exploration led to poor learning, reward = **141.00**     | Purity       |
+| CNN\_Optimized\_1     | 0.98      | 2.5e-4        | 0.01 → 0.01           | Low exploration limited diversity, decent stability, reward = **361.20**      | Nina         |
+| CNN\_Optimized\_2     | 0.99      | 5e-4          | 0.1 → 0.1             | More exploration improved results, reward = **386.40**                        | Nina         |
+| CNN\_Optimized\_2\_V2 | 0.90      | 5e-4          | 0.01 → 0.01           | Reduced gamma helped stabilize learning, reward = **401.00**                  | Purity       |
+| CNN\_Optimized\_5     | 0.99      | 2.5e-4        | 0.01 → 0.01           | Best result so far, stable + focused learning, reward = **407.40**            | Nina         |
+| Final\_CNN\_Optimized | 0.95      | 5e-4          | 0.001 → 0.001         | Final model: great balance of gamma and very low epsilon, reward = **443.10** | Purity       |
 
-### Experiment Results
-
-| Experiment         | γ (Gamma) | Learning Rate | Epsilon (Start → End) | Notable Observations                                                   |
-|--------------------|-----------|----------------|------------------------|------------------------------------------------------------------------|
-| CNN_Optimized_1    | 0.98      | 2.5e-4         | 0.01 → 0.01            | Low exploration limited diversity, decent stability, reward = **361.20** |
-| CNN_Optimized_2    | 0.99      | 5e-4           | 0.1 → 0.1              | Slightly more exploration helped, reward = **386.40**                  |
-| CNN_Optimized_5    | 0.99      | 2.5e-4         | 0.01 → 0.01            | Best result so far, stable + focused learning, reward = **407.40**     |
 
 ## Why CNN_Optimized_5 Succeeded
 
